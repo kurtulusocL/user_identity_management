@@ -1,0 +1,30 @@
+﻿@using UserManagement.Entities.Dtos.UserDtos.EntityFramework.ApplicationRoleDto
+@model ApplicationRole
+@{
+    ViewBag.Title = "Role Detail";
+    ViewBag.Desc = "User Role Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <br />
+        <div>
+            <h4>@ViewBag.Desc</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Role ID
+                </dt>
+                <dd>
+                    @Model.Id
+                </dd>
+            </dl>
+        </div>
+        <p>
+            <a href="~/Role/Edit/@Model.Id" class="btn btn-outline-success btn-sm">Edit</a>
+            <a href="~/Role/Index" class="btn btn-outline-primary btn-sm">Role List</a>
+        </p>
+    </div>
+</div>

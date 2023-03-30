@@ -1,0 +1,43 @@
+﻿@using UserManagement.Entities.Dtos.UserDtos.EntityFramework.ApplicationUserDto
+@model ApplicationUser
+@{
+    ViewBag.Title = "Role Detail";
+    ViewBag.Desc = "User Role Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <br />
+        <div>
+            <h4>@ViewBag.Desc</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    User ID
+                </dt>
+                <dd>
+                    @Model.Id
+                </dd>
+                <dt>
+                   Updated Date
+                </dt>
+                <dd>
+                    @if (Model.UpdatedDate != null)
+                    {
+                        @Model.UpdatedDate.Value.ToString()
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </dd>
+            </dl>
+        </div>
+        <p>
+            <a href="~/User/Edit/@Model.Id" class="btn btn-outline-success btn-sm">Edit</a>
+            <a href="~/User/Index" class="btn btn-outline-primary btn-sm">Role List</a>
+        </p>
+    </div>
+</div>

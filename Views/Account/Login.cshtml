@@ -1,0 +1,49 @@
+﻿@using UserManagement.Entities.Dtos.AuthDtos
+@model LoginDto
+@{
+    ViewBag.Title = "Admin Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <span>Username <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Username" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span>Password <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="password" name="Password" required />
+                    </div>
+                </div>
+                <br /><br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-outline-primary btn-sm" />
+                        <a href="~/Account/ForgotPassword" class="btn btn-outline-dark btn-sm">Forgot My Password</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
+    <div class="row">
+        @if (TempData["authError"] != null)
+        {
+            <h4 style="color:blue">@TempData["authError"]</h4>
+        }
+        else
+        {
+            <h4 style="color:red">@TempData["error"]</h4>
+        }
+    </div>
+</div>

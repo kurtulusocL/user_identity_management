@@ -1,0 +1,48 @@
+﻿@using UserManagement.Entities.Dtos.UserDtos.EntityFramework.ApplicationRoleDto
+@model ApplicationRole
+@{
+    ViewBag.Title = "Add A New Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        <form method="post" action="">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <span>Role Name <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Name" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Role Description <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Description" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add to Role" class="btn btn-outline-primary btn-sm" />
+                        <a href="~/Role/Index" class="btn btn-outline-info btn-sm">Role List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        @if (TempData["success"] != null)
+        {
+            <h4 style="color:blue">@TempData["success"]</h4>
+        }
+        else
+        {
+            <h4 style="color:red">@TempData["error"]</h4>
+        }
+    </div>
+</div>

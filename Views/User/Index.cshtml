@@ -1,0 +1,48 @@
+﻿@using UserManagement.Entities.Dtos.UserDtos.EntityFramework.ApplicationUserDto
+@model IEnumerable<ApplicationUser>
+@{
+    ViewBag.Title = "User List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        <table class="table table-hover">
+            <tr>
+                <th>Name Surname</th>
+                <th>Email Address</th>
+                <th>Username</th>
+                <th>Status</th>
+                <th>Roles</th>
+                <th>Created At</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NameSurname</td>
+                    <td>@item.Email</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        @if (item.IsConfirmed == true)
+                        {
+                            <span class="alert-info"><b>Online</b></span>
+                        }
+                        else
+                        {
+                            <span class="alert-info"><b>Suspended</b></span>
+                        }
+                    </td>
+                    <td>@item.Roles.Count()</td>
+                    <td>@item.CreatedDate.ToShortDateString()</td>
+                    <td>
+                        <a href="~/User/Detail/@item.Id" class="btn btn-outline-info btn-sm">Detail</a>
+                        <a href="~/User/Delete/@item.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

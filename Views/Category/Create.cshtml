@@ -1,0 +1,41 @@
+﻿@model UserManagement.Entities.Concrete.Category
+@{
+    ViewBag.Title = "Add A New Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        <form method="post" action="">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <span>Category Name <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Name" required />
+                    </div>
+                </div>
+                <br /><br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add to Category" class="btn btn-outline-primary btn-sm" />
+                        <a href="~/Category/Index" class="btn btn-outline-info btn-sm">Category List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br />
+    <div class="row">
+        @if (TempData["success"] != null)
+        {
+            <h4 style="color:blue">@TempData["success"]</h4>
+        }
+        else
+        {
+            <h4 style="color:red">@TempData["error"]</h4>
+        }
+    </div>
+</div>

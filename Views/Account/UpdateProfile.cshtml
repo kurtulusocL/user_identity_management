@@ -1,0 +1,55 @@
+﻿@using UserManagement.Entities.Dtos.AuthDtos
+@model UpdateProfileDto
+@{
+    ViewBag.Title = "Update My Profile";
+    Layout = "~/Views/Shared/_authLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        <form method="post" action="">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <span>User Name <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Username" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Email Address <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="email" name="Email" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Phone Number <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="PhoneNumber" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Update My Profile" class="btn btn-outline-primary btn-sm" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br />
+    <div class="row">
+        @if (TempData["success"] != null)
+        {
+            <h4 style="color:blue">@TempData["success"]</h4>
+        }
+        else
+        {
+            <h4 style="color:red">@TempData["error"]</h4>
+        }
+    </div>
+</div>

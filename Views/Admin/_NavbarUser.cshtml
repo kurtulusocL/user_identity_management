@@ -1,0 +1,38 @@
+﻿@using UserManagement.Entities.Dtos.UserDtos.EntityFramework.ApplicationUserDto
+@model ApplicationUser
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    <ul class="navbar-nav flex-grow-1">
+        <li>
+            <a href="~/Home/Index" class="navbar-brand">Home</a>
+        </li>
+        <li>
+            <a href="~/Product/Index" class="navbar-brand">Products</a>
+        </li>
+        <li>
+            <a href="~/Category/Index" class="navbar-brand">Categories</a>
+        </li>
+        @if (User.Identity.IsAuthenticated == true)
+        {
+            <li>
+                <a href="~/User/Index" class="navbar-brand">Users</a>
+            </li>
+            <li>
+                <a href="~/Role/Index" class="navbar-brand">User Roles</a>
+            </li>
+            <li>
+                <a href="~/Account/ChangePassword/@Model.Id" class="navbar-brand">Change Password</a>
+            </li>
+            <li>
+                <a href="~/Account/UpdateProfile/@Model.Id" class="navbar-brand">Update Profile</a>
+            </li>
+            <li>
+                <a href="~/Account/Logout" class="navbar-brand">Logout</a>
+            </li>
+        }
+    </ul>
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UserManagement.Entities.Concrete.Product>
+@{
+    ViewBag.Title = "Product List by Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        <p>
+            <a href="~/Product/Create" class="btn btn-outline-primary btn-sm">+ Add A New Category</a>
+        </p>
+        <table class="table table-hover">
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>UnitInStock</th>
+                <th>Created At</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Category.Name</td>
+                    <td>@item.Desc</td>
+                    <td>@item.Price.ToString()</td>
+                    <td>@item.UnitInStock.ToString()</td>
+                    <td>@item.CreatedDate.ToShortDateString()</td>
+                    <td>
+                        <a href="~/Product/Edit/@item.Id" class="btn btn-outline-success btn-sm">Edit</a>
+                        <a href="~/Product/Delete/@item.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

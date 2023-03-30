@@ -1,0 +1,77 @@
+﻿@model UserManagement.Entities.Concrete.Product
+@{
+    ViewBag.Title = "Update to Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        <form method="post" action="">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-lg-3">
+                        <label class="control-label" for="inputSuccess">Category List</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <select class="form-control m-bot15" name="CategoryId" required>
+                            <option>-- Select One Category --</option>
+                            @foreach (var item in ViewBag.Categories)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Product Name <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Name" value="@Model.Name" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Description <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Desc" value="@Model.Desc" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Product Price <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" name="Price" value="@Model.Price" required />
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>Unit In Stock <span class="mark">*</span></span>
+                    <div class="col-md-10">
+                        <input class="form-control" type="number" name="UnitInStock" value="@Model.UnitInStock" required />
+                    </div>
+                </div>
+                <br /><br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Update to Product" class="btn btn-outline-primary btn-sm" />
+                        <a href="~/Product/Index" class="btn btn-outline-info btn-sm">Product List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br />
+    <div class="row">
+        @if (TempData["success"] != null)
+        {
+            <h4 style="color:blue">@TempData["success"]</h4>
+        }
+        else
+        {
+            <h4 style="color:red">@TempData["error"]</h4>
+        }
+    </div>
+</div>
